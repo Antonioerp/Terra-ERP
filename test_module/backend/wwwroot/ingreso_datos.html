@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingreso de Datos - Terra ERP</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="css/test.css" rel="stylesheet">
+    <style>
+        .d-none {
+            display: none !important;
+        }
+        #loadingSpinner {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+        }
+        .form-container {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .hidden {
+            display: none;
+        }
+        .form-label {
+            font-weight: bold;
+            color: #333;
+        }
+        .form-control, .form-select {
+            margin-bottom: 10px;
+        }
+        .btn-primary {
+            margin-top: 20px;
+            width: 200px;
+        }
+        /* Estilos para Select2 */
+        .select2-container {
+            width: 100% !important;
+        }
+        .select2-container .select2-selection--single {
+            height: 38px;
+            border: 1px solid #ced4da;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            line-height: 38px;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 36px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="test_despachos.html">
+                                <i class="fas fa-database"></i> Ver Base de Datos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="ingreso_datos.html">
+                                <i class="fas fa-plus-circle"></i> Ingreso de Datos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../dashboard.html">
+                                <i class="fas fa-home"></i> Volver al Dashboard
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Main content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Ingreso de Datos</h1>
+                </div>
+
+                <!-- Loading spinner -->
+                <div id="loadingSpinner" class="text-center d-none">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Cargando...</span>
+                    </div>
+                </div>
+
+                <!-- Error message -->
+                <div id="errorMessage" class="alert alert-danger d-none" role="alert">
+                </div>
+
+                <!-- Success message -->
+                <div id="successMessage" class="alert alert-success d-none" role="alert">
+                </div>
+
+                <!-- Tabla selector -->
+                <div class="mb-4">
+                    <label for="tablaSelector" class="form-label">Seleccionar Tabla</label>
+                    <select class="form-select" id="tablaSelector">
+                        <option value="">Seleccione una tabla...</option>
+                    </select>
+                </div>
+
+                <!-- Formulario de ingreso -->
+                <div id="formularioContainer" class="form-container hidden">
+                    <form id="formularioIngreso" class="needs-validation" novalidate>
+                        <!-- Los campos del formulario se cargarán dinámicamente -->
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="js/ingreso_datos.js"></script>
+</body>
+</html> 

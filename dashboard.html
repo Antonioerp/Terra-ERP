@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terra ERP - Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo-container">
+            <h3>Terra ERP</h3>
+        </div>
+        <nav class="nav flex-column">
+            <a class="nav-link active" href="dashboard.html">
+                <i class="fas fa-home"></i> Dashboard
+            </a>
+            <a class="nav-link" href="faenas.html">
+                <i class="fas fa-truck"></i> Faenas
+            </a>
+            <a class="nav-link" href="produccion.html">
+                <i class="fas fa-industry"></i> Producción
+            </a>
+            <a class="nav-link" href="inventario.html">
+                <i class="fas fa-boxes"></i> Inventario
+            </a>
+            <a class="nav-link" href="facturacion.html">
+                <i class="fas fa-file-invoice-dollar"></i> Facturación
+            </a>
+            <a class="nav-link" href="costos.html">
+                <i class="fas fa-money-bill-wave"></i> Costos
+            </a>
+            <a class="nav-link" href="resultados.html">
+                <i class="fas fa-chart-line"></i> Resultados
+            </a>
+            <a class="nav-link" href="personas.html">
+                <i class="fas fa-users"></i> Personas
+            </a>
+            <a class="nav-link" href="despachos.html">
+                <i class="fas fa-shipping-fast"></i> Despachos
+            </a>
+            <a class="nav-link" href="#" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+            </a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container-fluid">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h1 class="display-4">Dashboard</h1>
+                    <p class="lead">Bienvenido al sistema Terra ERP</p>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <!-- Tarjeta de Faenas -->
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="fas fa-truck text-primary"></i> Faenas
+                            </h5>
+                            <p class="card-text">Gestión de faenas y operaciones mineras</p>
+                            <a href="faenas.html" class="btn btn-primary">Ver Faenas</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta de Producción -->
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="fas fa-industry text-success"></i> Producción
+                            </h5>
+                            <p class="card-text">Control de producción y rendimiento</p>
+                            <a href="produccion.html" class="btn btn-success">Ver Producción</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta de Inventario -->
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="fas fa-boxes text-info"></i> Inventario
+                            </h5>
+                            <p class="card-text">Gestión de inventario y stock</p>
+                            <a href="inventario.html" class="btn btn-info">Ver Inventario</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta de Facturación -->
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="fas fa-file-invoice-dollar text-warning"></i> Facturación
+                            </h5>
+                            <p class="card-text">Gestión de facturas y pagos</p>
+                            <a href="facturacion.html" class="btn btn-warning">Ver Facturación</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta de Costos -->
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="fas fa-money-bill-wave text-danger"></i> Costos
+                            </h5>
+                            <p class="card-text">Control de costos y presupuestos</p>
+                            <a href="costos.html" class="btn btn-danger">Ver Costos</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta de Resultados -->
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="fas fa-chart-line text-secondary"></i> Resultados
+                            </h5>
+                            <p class="card-text">Análisis de resultados y KPIs</p>
+                            <a href="resultados.html" class="btn btn-secondary">Ver Resultados</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html> 

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terra ERP - Producción</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo-container">
+            <h3>Terra ERP</h3>
+        </div>
+        <nav class="nav flex-column">
+            <a class="nav-link" href="dashboard.html">
+                <i class="fas fa-home"></i> Dashboard
+            </a>
+            <a class="nav-link" href="faenas.html">
+                <i class="fas fa-truck"></i> Faenas
+            </a>
+            <a class="nav-link active" href="produccion.html">
+                <i class="fas fa-industry"></i> Producción
+            </a>
+            <a class="nav-link" href="inventario.html">
+                <i class="fas fa-boxes"></i> Inventario
+            </a>
+            <a class="nav-link" href="facturacion.html">
+                <i class="fas fa-file-invoice-dollar"></i> Facturación
+            </a>
+            <a class="nav-link" href="costos.html">
+                <i class="fas fa-money-bill-wave"></i> Costos
+            </a>
+            <a class="nav-link" href="resultados.html">
+                <i class="fas fa-chart-line"></i> Resultados
+            </a>
+            <a class="nav-link" href="personas.html">
+                <i class="fas fa-users"></i> Personas
+            </a>
+            <a class="nav-link" href="despachos.html">
+                <i class="fas fa-shipping-fast"></i> Despachos
+            </a>
+            <a class="nav-link" href="#" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+            </a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container-fluid">
+            <div class="row mb-4">
+                <div class="col-12 d-flex justify-content-between align-items-center">
+                    <h1 class="display-4">Producción</h1>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#produccionModal">
+                        <i class="fas fa-plus"></i> Nueva Producción
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filtros -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label class="form-label">Faena</label>
+                            <select class="form-select">
+                                <option value="">Todas</option>
+                                <option value="1">Faena Norte</option>
+                                <option value="2">Faena Sur</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Fecha Inicio</label>
+                            <input type="date" class="form-control">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Fecha Fin</label>
+                            <input type="date" class="form-control">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">&nbsp;</label>
+                            <button class="btn btn-primary w-100">Filtrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabla de Producción -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Faena</th>
+                                    <th>Fecha</th>
+                                    <th>Turno</th>
+                                    <th>Material</th>
+                                    <th>Cantidad (ton)</th>
+                                    <th>Rendimiento (%)</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Faena Norte</td>
+                                    <td>2024-03-15</td>
+                                    <td>Mañana</td>
+                                    <td>Cobre</td>
+                                    <td>500</td>
+                                    <td>95</td>
+                                    <td><span class="badge bg-success">Completado</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-info" onclick="editarProduccion(1)">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-danger" onclick="eliminarProduccion(1)">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Producción -->
+    <div class="modal fade" id="produccionModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Nueva Producción</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="produccionForm">
+                        <div class="mb-3">
+                            <label class="form-label">Faena</label>
+                            <select class="form-select" required>
+                                <option value="">Seleccione una faena</option>
+                                <option value="1">Faena Norte</option>
+                                <option value="2">Faena Sur</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Fecha</label>
+                            <input type="date" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Turno</label>
+                            <select class="form-select" required>
+                                <option value="Mañana">Mañana</option>
+                                <option value="Tarde">Tarde</option>
+                                <option value="Noche">Noche</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Material</label>
+                            <select class="form-select" required>
+                                <option value="Cobre">Cobre</option>
+                                <option value="Oro">Oro</option>
+                                <option value="Plata">Plata</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Cantidad (ton)</label>
+                            <input type="number" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Rendimiento (%)</label>
+                            <input type="number" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Estado</label>
+                            <select class="form-select" required>
+                                <option value="En Proceso">En Proceso</option>
+                                <option value="Completado">Completado</option>
+                                <option value="Cancelado">Cancelado</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        function editarProduccion(id) {
+            // Implementar lógica de edición
+            console.log('Editar producción:', id);
+        }
+
+        function eliminarProduccion(id) {
+            if (confirm('¿Está seguro de eliminar este registro de producción?')) {
+                // Implementar lógica de eliminación
+                console.log('Eliminar producción:', id);
+            }
+        }
+    </script>
+</body>
+</html> 
